@@ -7,7 +7,7 @@ const getData = async () => {
   const res = await fetch("http://localhost:3000/api/categories", {
     cache: "no-store",
   });
-
+  // console.log(res);
   if (!res.ok) {
     throw new Error("Failed");
   }
@@ -23,7 +23,7 @@ const CategoryList = async () => {
       <div className={styles.categories}>
         {data?.map((item) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.title}`}
             className={`${styles.category} ${styles[item.slug]}`}
             key={item._id}
           >
